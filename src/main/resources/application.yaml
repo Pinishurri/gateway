@@ -1,0 +1,53 @@
+spring:
+    application:
+        name: gateway-perfulandia
+
+    cloud:
+        gateway:
+            server:
+                webflux:
+                    routes:
+                        
+                        - id: ms-usuarios
+                          uri: http://localhost:8081
+                          predicates:
+                              - Path=/api/v1/usuarios,/api/v1/usuarios/**
+
+                        - id: ms-catalogo
+                          uri: http://localhost:8082
+                          predicates:
+                              - Path=/api/v1/productos,/api/v1/productos/**
+
+                        - id: ms-inventario
+                          uri: http://localhost:8083
+                          predicates:
+                              - Path=/api/v1/inventario,/api/v1/inventario/**
+
+                        - id: ms-ventas
+                          uri: http://localhost:8084
+                          predicates:
+                              - Path=/api/v1/carritos,/api/v1/carritos/**,/api/v1/ventas,/api/v1/ventas/**,/api/v1/facturas,/api/v1/facturas/**
+
+                        
+                        - id: ms-administracion
+                          uri: http://localhost:8085
+                          predicates:
+                              - Path=/api/v1/sistema,/api/v1/sistema/**,/api/v1/respaldos,/api/v1/respaldos/**
+
+                        - id: ms-sucursal
+                          uri: http://localhost:8086
+                          predicates:
+                              - Path=/api/v1/sucursales,/api/v1/sucursales/**
+
+                        - id: ms-logistica
+                          uri: http://localhost:8087
+                          predicates:
+                              - Path=/api/v1/envios,/api/v1/envios/**,/api/v1/proveedores,/api/v1/proveedores/**,/api/v1/rutas,/api/v1/rutas/**,/api/v1/ordenes-reabastecimiento,/api/v1/ordenes-reabastecimiento/**
+
+                        - id: ms-reportes
+                          uri: http://localhost:8088
+                          predicates:
+                              - Path=/api/v1/reportes,/api/v1/reportes/**
+
+server:
+    port: 8080
